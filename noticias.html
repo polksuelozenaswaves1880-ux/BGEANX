@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noticias Crypto & BGEANX | BGEANX Blog</title>
+  <meta name="description" content="Las últimas noticias del ecosistema Bitcoin y BGEANX Exchange. Actualizaciones del mercado, regulación y novedades de la plataforma." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-void: #030712;
+      --bg-deep: #060d1f;
+      --bg-panel: #0a1628;
+      --bg-card: #0d1f3c;
+      --accent-cyan: #00e5ff;
+      --accent-lime: #aaff00;
+      --accent-amber: #ffb300;
+      --accent-red: #ff3d57;
+      --text-primary: #e8f4ff;
+      --text-secondary: #8aabc8;
+      --text-muted: #4a6380;
+      --border-dim: #1a2d4a;
+      --border-glow: rgba(0,229,255,0.3);
+      --grid-line: rgba(0,229,255,0.04);
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      --font-body: 'Roboto Condensed', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-void);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px; line-height: 1.7; overflow-x: hidden;
+    }
+
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 48px 48px; pointer-events: none; z-index: 0;
+    }
+
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px);
+      pointer-events: none; z-index: 0;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 64px;
+      background: rgba(3,7,18,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono); font-size: 18px; font-weight: 700;
+      color: var(--accent-cyan); letter-spacing: 0.1em;
+      text-decoration: none; display: flex; align-items: center; gap: 10px;
+    }
+
+    .nav-logo::before { content: '▸'; color: var(--accent-lime); animation: blink 1.4s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
+
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-secondary); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
+
+    .nav-cta {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--bg-void); background: var(--accent-cyan);
+      padding: 8px 20px; text-decoration: none;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-lime); transform: translateY(-1px); }
+
+    /* PAGE HERO */
+    .page-hero {
+      position: relative; padding: 120px 48px 64px; z-index: 1;
+      background: linear-gradient(180deg, rgba(255,61,87,0.03) 0%, transparent 100%);
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .page-hero-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; }
+
+    .page-hero-left {}
+
+    .breadcrumb {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 24px;
+    }
+    .breadcrumb a { color: var(--accent-cyan); text-decoration: none; }
+    .breadcrumb span { margin: 0 8px; }
+
+    .page-title {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(36px, 6vw, 72px);
+      line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 20px;
+    }
+
+    .page-title .dim { color: var(--text-muted); }
+    .page-title .accent { color: var(--accent-red); }
+
+    .page-desc { font-size: 15px; color: var(--text-secondary); max-width: 480px; line-height: 1.8; }
+
+    /* SEARCH + FILTER */
+    .filter-bar {
+      display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    }
+
+    .search-input {
+      background: var(--bg-panel); border: 1px solid var(--border-dim);
+      color: var(--text-primary); font-family: var(--font-mono); font-size: 12px;
+      padding: 10px 16px; outline: none; transition: border-color 0.2s;
+      width: 240px;
+    }
+    .search-input:focus { border-color: var(--border-glow); }
+    .search-input::placeholder { color: var(--text-muted); }
+
+    .filter-btn {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 10px 16px; cursor: pointer;
+      border: 1px solid var(--border-dim); background: transparent;
+      color: var(--text-muted); transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      color: var(--accent-cyan); border-color: var(--border-glow);
+      background: rgba(0,229,255,0.04);
+    }
+    .filter-btn.active { color: var(--accent-lime); border-color: rgba(170,255,0,0.3); }
+
+    /* MAIN */
+    .main-container {
+      position: relative; z-index: 1;
+      max-width: 1200px; margin: 0 auto; padding: 64px 48px;
+    }
+
+    /* FEATURED NEWS */
+    .featured-article {
+      display: grid; grid-template-columns: 1fr 380px; gap: 48px;
+      background: var(--bg-card); border: 1px solid var(--border-dim);
+      overflow: hidden; margin-bottom: 64px;
+      transition: border-color 0.3s;
+    }
+    .featured-article:hover { border-color: var(--border-glow); }
+
+    .featured-visual {
+      background: linear-gradient(135deg, #0a1628 0%, #0d1f3c 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 48px; min-height: 320px; position: relative; overflow: hidden;
+    }
+
+    .featured-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(0,229,255,0.1) 0%, transparent 70%);
+    }
+
+    .feat-chart-svg { position: relative; z-index: 1; }
+
+    .featured-content { padding: 40px 40px 40px 0; display: flex; flex-direction: column; justify-content: center; }
+
+    .article-cat {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em;
+      text-transform: uppercase; padding: 4px 10px; display: inline-block;
+      margin-bottom: 16px;
+    }
+
+    .cat-market { color: var(--accent-lime); border: 1px solid rgba(170,255,0,0.3); }
+    .cat-platform { color: var(--accent-cyan); border: 1px solid rgba(0,229,255,0.3); }
+    .cat-regulation { color: var(--accent-amber); border: 1px solid rgba(255,179,0,0.3); }
+    .cat-security { color: var(--accent-red); border: 1px solid rgba(255,61,87,0.3); }
+    .cat-analysis { color: #c084fc; border: 1px solid rgba(192,132,252,0.3); }
+
+    .article-title {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(20px, 2.5vw, 28px);
+      line-height: 1.2; margin-bottom: 16px; color: var(--text-primary);
+    }
+
+    .article-excerpt {
+      font-size: 14px; color: var(--text-secondary);
+      line-height: 1.8; margin-bottom: 24px;
+    }
+
+    .article-meta {
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .meta-date, .meta-read {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+
+    .article-tag {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 2px 8px;
+      color: var(--text-muted); border: 1px solid var(--border-dim);
+    }
+
+    .read-more {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent-cyan); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px; transition: gap 0.2s;
+    }
+    .read-more:hover { gap: 14px; }
+
+    /* NEWS GRID */
+    .section-label {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border-dim); }
+
+    .news-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border-dim); border: 1px solid var(--border-dim);
+      margin-bottom: 64px;
+    }
+
+    .news-card {
+      background: var(--bg-panel); padding: 28px 24px;
+      transition: background 0.3s; cursor: pointer;
+      display: flex; flex-direction: column;
+    }
+    .news-card:hover { background: var(--bg-card); }
+
+    .news-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+
+    .news-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 16px; line-height: 1.3; color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .news-excerpt { font-size: 13px; color: var(--text-secondary); line-height: 1.7; flex: 1; }
+
+    .news-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-dim);
+    }
+
+    .news-date { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+    .news-arrow { font-family: var(--font-mono); font-size: 14px; color: var(--accent-cyan); transition: transform 0.2s; }
+    .news-card:hover .news-arrow { transform: translateX(4px); }
+
+    /* IMPACT BADGE */
+    .impact {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 3px 8px; flex-shrink: 0;
+    }
+    .impact.high { color: var(--accent-red); border: 1px solid rgba(255,61,87,0.3); }
+    .impact.mid { color: var(--accent-amber); border: 1px solid rgba(255,179,0,0.3); }
+    .impact.low { color: var(--text-muted); border: 1px solid var(--border-dim); }
+
+    /* LAYOUT: NEWS + SIDEBAR */
+    .news-with-sidebar {
+      display: grid; grid-template-columns: 1fr 320px; gap: 48px; margin-bottom: 64px; align-items: start;
+    }
+
+    /* OPINION ARTICLES */
+    .opinion-list { display: flex; flex-direction: column; gap: 0; }
+
+    .opinion-item {
+      display: grid; grid-template-columns: 64px 1fr; gap: 20px;
+      padding: 24px 0; border-bottom: 1px solid var(--border-dim);
+      cursor: pointer; transition: background 0.2s;
+    }
+    .opinion-item:last-child { border-bottom: none; }
+    .opinion-item:hover { background: rgba(0,229,255,0.02); }
+
+    .opinion-num {
+      font-family: var(--font-mono); font-size: 36px; font-weight: 700;
+      color: var(--border-dim); line-height: 1; padding-top: 4px;
+    }
+
+    .opinion-cat { margin-bottom: 6px; }
+    .opinion-title { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--text-primary); margin-bottom: 8px; line-height: 1.3; }
+    .opinion-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+
+    /* SIDEBAR */
+    .news-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+    .sidebar-widget { background: var(--bg-card); border: 1px solid var(--border-dim); padding: 24px; }
+
+    .sw-title {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 16px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--border-dim);
+    }
+
+    /* TRENDING TOPICS */
+    .trending-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .trending-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 0; border-bottom: 1px solid rgba(26,45,74,0.5);
+    }
+    .trending-item:last-child { border-bottom: none; }
+    .trending-rank { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); width: 20px; flex-shrink: 0; }
+    .trending-tag { font-family: var(--font-mono); font-size: 11px; color: var(--accent-lime); }
+    .trending-count { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); margin-left: auto; }
+
+    /* NEWSLETTER */
+    .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+    .newsletter-input {
+      background: var(--bg-panel); border: 1px solid var(--border-dim);
+      color: var(--text-primary); font-family: var(--font-mono); font-size: 12px;
+      padding: 10px 14px; outline: none; transition: border-color 0.2s;
+    }
+    .newsletter-input:focus { border-color: var(--border-glow); }
+    .newsletter-input::placeholder { color: var(--text-muted); }
+    .newsletter-btn {
+      background: var(--accent-cyan); color: var(--bg-void);
+      border: none; font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 12px; cursor: pointer;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+      transition: background 0.2s;
+    }
+    .newsletter-btn:hover { background: var(--accent-lime); }
+    .newsletter-note { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+    /* PRICE SNAPSHOT */
+    .price-snap-list { list-style: none; }
+    .price-snap-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 10px 0; border-bottom: 1px solid rgba(26,45,74,0.5);
+    }
+    .price-snap-item:last-child { border-bottom: none; }
+    .ps-sym { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--text-primary); }
+    .ps-price { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); }
+    .ps-chg { font-family: var(--font-mono); font-size: 11px; }
+    .ps-chg.up { color: var(--accent-lime); }
+    .ps-chg.down { color: var(--accent-red); }
+
+    /* TIMELINE NEWS */
+    .timeline { position: relative; padding-left: 24px; }
+    .timeline::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 1px; background: var(--border-dim); }
+
+    .timeline-item {
+      position: relative; margin-bottom: 32px;
+    }
+
+    .timeline-item::before {
+      content: ''; position: absolute;
+      left: -22px; top: 6px;
+      width: 8px; height: 8px;
+      border-radius: 0;
+      background: var(--accent-cyan);
+      border: 2px solid var(--bg-void);
+    }
+
+    .timeline-date {
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent-cyan); margin-bottom: 8px;
+    }
+
+    .timeline-title {
+      font-family: var(--font-display); font-weight: 700; font-size: 15px;
+      color: var(--text-primary); margin-bottom: 8px; line-height: 1.3;
+    }
+
+    .timeline-body { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+
+    /* PAGINATION */
+    .pagination {
+      display: flex; gap: 4px; align-items: center; justify-content: center;
+      margin: 48px 0;
+    }
+
+    .page-btn {
+      font-family: var(--font-mono); font-size: 11px;
+      padding: 10px 16px; cursor: pointer;
+      border: 1px solid var(--border-dim); background: transparent;
+      color: var(--text-muted); transition: all 0.2s;
+    }
+    .page-btn:hover { color: var(--accent-cyan); border-color: var(--border-glow); }
+    .page-btn.active { color: var(--bg-void); background: var(--accent-cyan); border-color: var(--accent-cyan); }
+
+    footer {
+      border-top: 1px solid var(--border-dim); padding: 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 24px; flex-wrap: wrap; position: relative; z-index: 1;
+    }
+    .footer-logo { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--accent-cyan); text-decoration: none; }
+    .footer-copy { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-align: center; }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent-cyan); }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg-void); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-cyan); }
+
+    @media (max-width: 1024px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 100px 24px 48px; }
+      .main-container { padding: 40px 24px; }
+      .featured-article { grid-template-columns: 1fr; }
+      .featured-content { padding: 28px; }
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .news-with-sidebar { grid-template-columns: 1fr; }
+      .news-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      footer { padding: 32px 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .news-grid { grid-template-columns: 1fr; }
+      .news-sidebar { grid-template-columns: 1fr; }
+      .filter-bar { gap: 8px; }
+      .search-input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">BGEANX.BLOG</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="mercado.html">Mercado</a></li>
+    <li><a href="guia.html">Guía Trading</a></li>
+    <li><a href="noticias.html" class="active">Noticias</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <a href="https://www.bgeanx.com" target="_blank" rel="noopener" class="nav-cta">Visitar el sitio oficial</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-left">
+      <div class="breadcrumb">
+        <a href="index.html">Inicio</a><span>/</span> Noticias
+      </div>
+      <h1 class="page-title">
+        Noticias<br>
+        <span class="dim">&</span> <span class="accent">Actualidad</span>
+      </h1>
+      <p class="page-desc">Mercado Bitcoin, regulación global, actualizaciones de BGEANX y análisis de coyuntura. Filtrado y comentado desde perspectiva personal.</p>
+    </div>
+    <div class="filter-bar">
+      <input class="search-input" type="text" placeholder="Buscar noticias..." id="searchInput" oninput="filterNews()">
+      <button class="filter-btn active" onclick="setFilter('all', this)">Todos</button>
+      <button class="filter-btn" onclick="setFilter('market', this)">Mercado</button>
+      <button class="filter-btn" onclick="setFilter('platform', this)">Plataforma</button>
+      <button class="filter-btn" onclick="setFilter('regulation', this)">Regulación</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-container">
+
+  <!-- FEATURED -->
+  <div class="section-label reveal">Noticia destacada</div>
+
+  <div class="featured-article reveal">
+    <div class="featured-visual">
+      <svg class="feat-chart-svg" viewBox="0 0 280 180" width="280" height="180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="featGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#aaff00" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#aaff00" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <text x="140" y="30" fill="#00e5ff" font-family="Space Mono" font-size="11" text-anchor="middle" letter-spacing="0.1em">BTC/USDT</text>
+        <line x1="0" y1="50" x2="280" y2="50" stroke="#1a2d4a" stroke-width="1"/>
+        <line x1="0" y1="90" x2="280" y2="90" stroke="#1a2d4a" stroke-width="1"/>
+        <line x1="0" y1="130" x2="280" y2="130" stroke="#1a2d4a" stroke-width="1"/>
+        <path d="M0 150 L28 140 L56 135 L84 120 L112 110 L140 95 L168 88 L196 75 L224 65 L252 55 L280 48 L280 180 L0 180 Z" fill="url(#featGrad)"/>
+        <path d="M0 150 L28 140 L56 135 L84 120 L112 110 L140 95 L168 88 L196 75 L224 65 L252 55 L280 48" fill="none" stroke="#aaff00" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="280" cy="48" r="4" fill="#aaff00"/>
+        <text x="240" y="44" fill="#aaff00" font-family="Space Mono" font-size="9">$67,420</text>
+        <text x="0" y="44" fill="#4a6380" font-family="Space Mono" font-size="8">70K</text>
+        <text x="0" y="88" fill="#4a6380" font-family="Space Mono" font-size="8">66K</text>
+        <text x="0" y="128" fill="#4a6380" font-family="Space Mono" font-size="8">62K</text>
+      </svg>
+    </div>
+    <div class="featured-content">
+      <span class="article-cat cat-market">Mercado</span>
+      <div class="article-meta">
+        <span class="meta-date">12 Jun 2025</span>
+        <span class="meta-read">6 min lectura</span>
+        <span class="article-tag">Impacto: Alto</span>
+      </div>
+      <h2 class="article-title">Bitcoin supera los $67,000: análisis de los factores que impulsan el rally de mediados de año</h2>
+      <p class="article-excerpt">El precio de Bitcoin ha registrado un incremento sostenido del 18% en las últimas tres semanas, impulsado por un cúmulo de factores que van desde la renovada demanda institucional hasta el efecto acumulado del halving de abril. Analizo cada uno desde mi experiencia operando en BGEANX Exchange durante este periodo.</p>
+      <a href="#" class="read-more">Leer análisis completo →</a>
+    </div>
+  </div>
+
+  <!-- NEWS GRID -->
+  <div class="section-label reveal">Noticias recientes</div>
+
+  <div class="news-grid reveal" id="newsGrid">
+
+    <div class="news-card" data-cat="market">
+      <div class="news-card-top">
+        <span class="article-cat cat-market">Mercado</span>
+        <span class="impact high">Alto</span>
+      </div>
+      <div class="news-title">ETFs de Bitcoin acumulan $2.8B en flujos positivos durante la semana</div>
+      <div class="news-excerpt">Los ETFs de Bitcoin al contado en EE.UU. registraron su semana de entradas netas más alta desde febrero, señal del creciente interés institucional. El impacto en el libro de órdenes de BGEANX fue notable durante las sesiones europeas y americanas.</div>
+      <div class="news-footer">
+        <span class="news-date">10 Jun 2025</span>
+        <span class="news-arrow">→</span>
+      </div>
+    </div>
+
+    <div class="news-card" data-cat="platform">
+      <div class="news-card-top">
+        <span class="article-cat cat-platform">Plataforma</span>
+        <span class="impact mid">Medio</span>
+      </div>
+      <div class="news-title">BGEANX lanza nuevas herramientas de análisis avanzado para trading profesional</div>
+      <div class="news-excerpt">La plataforma ha actualizado su suite de herramientas con nuevos indicadores de order flow, análisis de libro de órdenes en profundidad y alertas personalizables por múltiples condiciones simultáneas. Mi primera impresión tras probarlo.</div>
+      <div class="news-footer">
+        <span class="news-date">8 Jun 2025</span>
+        <span class="news-arrow">→</span>
+      </div>
+    </div>
+
+    <div class="news-card" data-cat="regulation">
+      <div class="news-card-top">
+        <span class="article-cat cat-regulation">Regulación</span>
+        <span class="impact high">Alto</span>
+      </div>
+      <div class="news-title">La UE implementa nuevas directivas MiCA con impacto en exchanges globales</div>
+      <div class="news-excerpt">Las regulaciones MiCA entran en vigor para exchanges de criptomonedas que operan en Europa. BGEANX, con sus licencias MSB y SEC vigentes, se adapta al nuevo marco regulatorio sin interrupciones en el servicio para usuarios europeos.</div>
+      <div class="news-footer">
+        <span class="news-date">5 Jun 2025</span>
+        <span class="news-arrow">→</span>
+      </div>
+    </div>
+
+    <div class="news-card" data-cat="market">
+      <div class="news-card-top">
+        <span class="article-cat cat-market">Mercado</span>
+        <span class="impact mid">Medio</span>
+      </div>
+      <div class="news-title">El hash rate de Bitcoin alcanza nuevo máximo histórico: implicaciones para el precio</div>
+      <div class="news-excerpt">La red Bitcoin opera con un hash rate de 612 EH/s, máximo histórico. Una red más segura históricamente correlaciona positivamente con el sentimiento de mercado. Analizo qué significa para los traders en BGEANX.</div>
+      <div class="news-footer">
+        <span class="news-date">3 Jun 2025</span>
+        <span class="news-arrow">→</span>
+      </div>
+    </div>
+
+    <div class="news-card" data-cat="platform">
+      <div class="news-card-top">
+        <span class="article-cat cat-platform">Plataforma</span>
+        <span class="impact mid">Medio</span>
+      </div>
+      <div class="news-title">BGEANX amplía su programa de recompensas USDT para el mercado spot</div>
+      <div class="news-excerpt">El exchange amplía su programa de incentivos con mayor retorno en USDT para traders activos en el mercado spot. Comparto cómo aprovechar el programa sin alterar tu estrategia de trading base.</div>
+      <div class="news-footer">
+        <span class="news-date">1 Jun 2025</span>
+        <span class="news-arrow">→</span>
+      </div>
+    </div>
+
+    <div class="news-card" data-cat="regulation">
+      <div class="news-card-top">
+        <span class="article-cat cat-regulation">Regulación</span>
+        <span class="impact low">Bajo</span>
+      </div>
+      <div class="news-title">México avanza en marco regulatorio para exchanges de criptomonedas en 2025</div>
+      <div class="news-excerpt">La CNBV actualiza los requisitos para operadores de activos virtuales. El nuevo marco proporciona mayor certeza jurídica para usuarios mexicanos de plataformas internacionales como BGEANX que operan con licencias en múltiples jurisdicciones.</div>
+      <div class="news-footer">
+        <span class="news-date">29 May 2025</span>
+        <span class="news-arrow">→</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- OPINION + SIDEBAR -->
+  <div class="news-with-sidebar">
+    <div>
+      <div class="section-label reveal">Análisis & Opinión</div>
+      <div class="opinion-list reveal">
+
+        <div class="opinion-item">
+          <div class="opinion-num">01</div>
+          <div>
+            <div class="opinion-cat"><span class="article-cat cat-analysis">Análisis</span></div>
+            <div class="opinion-title">¿Por qué el halving de 2024 sigue siendo relevante para el precio actual?</div>
+            <div class="opinion-meta">28 May 2025 · 8 min lectura</div>
+          </div>
+        </div>
+
+        <div class="opinion-item">
+          <div class="opinion-num">02</div>
+          <div>
+            <div class="opinion-cat"><span class="article-cat cat-market">Mercado</span></div>
+            <div class="opinion-title">Comparativa: cómo operan las ballenas de Bitcoin en exchanges regulados vs no regulados</div>
+            <div class="opinion-meta">24 May 2025 · 10 min lectura</div>
+          </div>
+        </div>
+
+        <div class="opinion-item">
+          <div class="opinion-num">03</div>
+          <div>
+            <div class="opinion-cat"><span class="article-cat cat-platform">Plataforma</span></div>
+            <div class="opinion-title">Mi revisión del sistema de seguridad adaptativa de BGEANX tras 6 meses de uso</div>
+            <div class="opinion-meta">20 May 2025 · 7 min lectura</div>
+          </div>
+        </div>
+
+        <div class="opinion-item">
+          <div class="opinion-num">04</div>
+          <div>
+            <div class="opinion-cat"><span class="article-cat cat-regulation">Regulación</span></div>
+            <div class="opinion-title">¿Qué significa para LATAM la adopción creciente de marcos regulatorios cripto en 2025?</div>
+            <div class="opinion-meta">15 May 2025 · 9 min lectura</div>
+          </div>
+        </div>
+
+        <div class="opinion-item">
+          <div class="opinion-num">05</div>
+          <div>
+            <div class="opinion-cat"><span class="article-cat cat-analysis">Análisis</span></div>
+            <div class="opinion-title">Métricas on-chain que no deberías ignorar al operar Bitcoin en 2025</div>
+            <div class="opinion-meta">10 May 2025 · 11 min lectura</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="news-sidebar">
+
+      <div class="sidebar-widget reveal">
+        <div class="sw-title">// Precios actuales</div>
+        <ul class="price-snap-list">
+          <li class="price-snap-item">
+            <span class="ps-sym">BTC</span>
+            <span class="ps-price">$67,420</span>
+            <span class="ps-chg up">+2.34%</span>
+          </li>
+          <li class="price-snap-item">
+            <span class="ps-sym">ETH</span>
+            <span class="ps-price">$3,512</span>
+            <span class="ps-chg up">+1.87%</span>
+          </li>
+          <li class="price-snap-item">
+            <span class="ps-sym">SOL</span>
+            <span class="ps-price">$172.9</span>
+            <span class="ps-chg up">+3.12%</span>
+          </li>
+          <li class="price-snap-item">
+            <span class="ps-sym">BNB</span>
+            <span class="ps-price">$412.3</span>
+            <span class="ps-chg down">-0.45%</span>
+          </li>
+          <li class="price-snap-item">
+            <span class="ps-sym">XRP</span>
+            <span class="ps-price">$0.682</span>
+            <span class="ps-chg down">-1.20%</span>
+          </li>
+        </ul>
+        <div style="margin-top:12px;font-family:var(--font-mono);font-size:9px;color:var(--text-muted);">BGEANX Exchange · Datos ilustrativos</div>
+      </div>
+
+      <div class="sidebar-widget reveal">
+        <div class="sw-title">// Temas trending</div>
+        <ul class="trending-list">
+          <li class="trending-item">
+            <span class="trending-rank">01</span>
+            <span class="trending-tag">#BitcoinETF</span>
+            <span class="trending-count">2.4K</span>
+          </li>
+          <li class="trending-item">
+            <span class="trending-rank">02</span>
+            <span class="trending-tag">#BGEANXUpdate</span>
+            <span class="trending-count">1.8K</span>
+          </li>
+          <li class="trending-item">
+            <span class="trending-rank">03</span>
+            <span class="trending-tag">#Halving2024</span>
+            <span class="trending-count">1.2K</span>
+          </li>
+          <li class="trending-item">
+            <span class="trending-rank">04</span>
+            <span class="trending-tag">#MiCA</span>
+            <span class="trending-count">987</span>
+          </li>
+          <li class="trending-item">
+            <span class="trending-rank">05</span>
+            <span class="trending-tag">#GoldenCross</span>
+            <span class="trending-count">754</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-widget reveal">
+        <div class="sw-title">// Boletín semanal</div>
+        <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;">Recibe un resumen semanal del mercado Bitcoin y novedades de BGEANX directamente en tu correo.</p>
+        <div class="newsletter-form">
+          <input class="newsletter-input" type="email" placeholder="tu@correo.com">
+          <button class="newsletter-btn">Suscribirse</button>
+        </div>
+        <p class="newsletter-note" style="margin-top:10px;">Sin spam. Un solo correo por semana. Sin afiliación oficial con BGEANX.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section-label reveal">Cronología BGEANX 2025</div>
+  <div class="timeline reveal">
+
+    <div class="timeline-item">
+      <div class="timeline-date">Junio 2025</div>
+      <div class="timeline-title">BGEANX actualiza sistema de verificación KYC con nueva tecnología biométrica</div>
+      <div class="timeline-body">El proceso de verificación de identidad se reduce de 48 a menos de 24 horas en promedio gracias a la integración de tecnología de verificación biométrica de última generación compatible con sistemas de identidad digital internacionales.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Mayo 2025</div>
+      <div class="timeline-title">Lanzamiento del nuevo panel de análisis avanzado para traders profesionales</div>
+      <div class="timeline-body">BGEANX introduce herramientas de análisis de order flow, depth chart mejorado y nuevas opciones de personalización del panel de trading. La actualización es gratuita para todos los usuarios verificados.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Abril 2025</div>
+      <div class="timeline-title">BGEANX amplía cobertura regulatoria a tres nuevas jurisdicciones europeas</div>
+      <div class="timeline-body">En anticipación a MiCA, el exchange completa los procesos de licenciamiento en tres países de la UE, ampliando su cobertura regulatoria global y dando mayor certeza a sus usuarios europeos.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Marzo 2025</div>
+      <div class="timeline-title">Sistema de seguridad adaptativa IA reconocido por especialistas del sector</div>
+      <div class="timeline-body">El sistema de detección de amenazas de BGEANX basado en inteligencia artificial es destacado en informes sectoriales de ciberseguridad financiera como referencia en el segmento de exchanges cripto regulados.</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Enero 2025</div>
+      <div class="timeline-title">BGEANX alcanza 2 millones de usuarios verificados a nivel global</div>
+      <div class="timeline-body">La plataforma supera el hito de dos millones de usuarios con verificación KYC completada, consolidando su posición como exchange de referencia para traders que priorizan cumplimiento regulatorio y seguridad.</div>
+    </div>
+
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination reveal">
+    <button class="page-btn active">1</button>
+    <button class="page-btn">2</button>
+    <button class="page-btn">3</button>
+    <button class="page-btn">…</button>
+    <button class="page-btn">8</button>
+    <button class="page-btn">→</button>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="footer-logo">▸ BGEANX.BLOG</a>
+  <div class="footer-copy">
+    © 2025 Blog Personal Independiente · Las noticias son de carácter informativo.<br>
+    No afiliado oficialmente con BGEANX Digital Ltd.
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="mercado.html">Mercado</a></li>
+    <li><a href="guia.html">Guía</a></li>
+    <li><a href="https://www.bgeanx.com" target="_blank" rel="noopener">bgeanx.com ↗</a></li>
+  </ul>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(r => observer.observe(r));
+
+  let activeFilter = 'all';
+
+  function setFilter(cat, btn) {
+    activeFilter = cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterNews();
+  }
+
+  function filterNews() {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    document.querySelectorAll('.news-card').forEach(card => {
+      const cat = card.dataset.cat;
+      const text = card.innerText.toLowerCase();
+      const catMatch = activeFilter === 'all' || cat === activeFilter;
+      const searchMatch = !search || text.includes(search);
+      card.style.display = (catMatch && searchMatch) ? '' : 'none';
+    });
+  }
+
+  // Pagination (demo)
+  document.querySelectorAll('.page-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      if (this.textContent === '→' || this.textContent === '…') return;
+      document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // PROGRESS BAR + BACK TO TOP
+  window.addEventListener("scroll", () => {
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+    const pb = document.getElementById("progressBar");
+    if (pb) pb.style.width = pct + "%";
+    const btt = document.getElementById("backToTop");
+    if (btt) btt.style.opacity = window.scrollY > 400 ? "1" : "0";
+  });
+</script>
+
+<!-- PROGRESS BAR -->
+<div style="position:fixed;top:64px;left:0;right:0;height:2px;background:var(--border-dim);z-index:101;">
+  <div id="progressBar" style="height:100%;background:linear-gradient(90deg,var(--accent-cyan),var(--accent-lime));width:0%;transition:width 0.1s;"></div>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+  style="position:fixed;bottom:32px;right:32px;z-index:99;background:var(--bg-card);border:1px solid var(--border-dim);color:var(--accent-cyan);font-family:var(--font-mono);font-size:16px;width:44px;height:44px;cursor:pointer;opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
+  aria-label="Volver arriba">↑</button>
+
+</body>
+</html>

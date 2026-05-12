@@ -8,7 +8,6 @@
   <meta name="keywords" content="BGEANX, exchange Bitcoin, intercambio criptomonedas, trading Bitcoin, BGEANX review, BGEANX opiniones, comprar Bitcoin, seguridad cripto, exchange regulado" />
   <meta name="author" content="Blog Personal BGEANX" />
   <meta name="robots" content="index, follow" />
-  <meta name="google-site-verification" content="YX-CC9ksGL9cHF5q9xWnrO8p5iHMGGCBZJBlqISRDbQ" />
   <link rel="canonical" href="https://bgeanx-personal.com/" />
 
   <!-- Open Graph / GEO SEO -->
@@ -1053,16 +1052,102 @@
     ::-webkit-scrollbar-thumb { background: var(--accent-cyan); }
 
     /* ======= RESPONSIVE ======= */
+    /* HAMBURGER */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-secondary);
+      transition: all 0.3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* MOBILE MENU */
+    .mobile-menu {
+      position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      background: rgba(3,7,18,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 99;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+      overflow-y: auto;
+      border-top: 1px solid var(--border-dim);
+    }
+
+    .mobile-menu.open { transform: translateX(0); }
+
+    .mobile-menu-inner {
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .mobile-menu-section { display: flex; flex-direction: column; gap: 0; }
+
+    .mobile-menu-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .mobile-menu-section a {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--text-primary);
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-dim);
+      display: block;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+
+    .mobile-menu-section a:last-child { border-bottom: none; }
+    .mobile-menu-section a:hover { color: var(--accent-cyan); padding-left: 8px; }
+
+    .mobile-cta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bg-void);
+      background: var(--accent-cyan);
+      padding: 16px 28px;
+      text-decoration: none;
+      text-align: center;
+      clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    }
+
     @media (max-width: 1024px) {
       nav { padding: 0 24px; }
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
       #hero { padding: 100px 24px 80px; }
       .hero-stats { display: none; }
       .container { padding: 0 24px; }
       .about-grid, .trading-layout, .security-layout, .experience-intro, .faq-layout { grid-template-columns: 1fr; gap: 40px; }
       .features-grid { grid-template-columns: 1fr 1fr; }
       .steps-grid { grid-template-columns: 1fr 1fr; }
-      footer { padding: 32px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+      #paginas .container > div:last-child { grid-template-columns: 1fr !important; }
     }
 
     @media (max-width: 600px) {
@@ -1075,7 +1160,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">BGEANX.BLOG</a>
+  <a href="index.html" class="nav-logo">BGEANX.BLOG</a>
   <ul class="nav-links">
     <li><a href="#about">Sobre BGEANX</a></li>
     <li><a href="#features">Características</a></li>
@@ -1083,9 +1168,40 @@
     <li><a href="#seguridad">Seguridad</a></li>
     <li><a href="#experiencia">Mi Experiencia</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li class="nav-divider" style="width:1px;height:16px;background:var(--border-dim);margin:0 4px;"></li>
+    <li><a href="mercado.html" style="color:var(--accent-lime);">Mercado</a></li>
+    <li><a href="guia.html" style="color:var(--accent-lime);">Guía</a></li>
+    <li><a href="noticias.html" style="color:var(--accent-lime);">Noticias</a></li>
   </ul>
-  <a href="https://www.bgeanx.com" target="_blank" rel="noopener" class="nav-cta">Visitar el sitio oficial</a>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menú" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="https://www.bgeanx.com" target="_blank" rel="noopener" class="nav-cta">Visitar el sitio oficial</a>
+  </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">// Esta página</div>
+      <a href="#about" onclick="closeMobileMenu()">Sobre BGEANX</a>
+      <a href="#features" onclick="closeMobileMenu()">Características</a>
+      <a href="#trading" onclick="closeMobileMenu()">Trading</a>
+      <a href="#seguridad" onclick="closeMobileMenu()">Seguridad</a>
+      <a href="#experiencia" onclick="closeMobileMenu()">Mi Experiencia</a>
+      <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">// Otras páginas</div>
+      <a href="mercado.html">📊 Análisis de Mercado</a>
+      <a href="guia.html">📚 Guía de Trading</a>
+      <a href="noticias.html">📰 Noticias</a>
+    </div>
+    <a href="https://www.bgeanx.com" target="_blank" rel="noopener" class="mobile-cta">Visitar bgeanx.com ↗</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -1576,22 +1692,75 @@
   </div>
 </section>
 
+<!-- PAGES SECTION -->
+<section id="paginas" style="padding:80px 0;background:linear-gradient(180deg,transparent,var(--bg-deep) 20%,var(--bg-deep) 80%,transparent);position:relative;z-index:1;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// Explora más contenido</span>
+      <h2 class="section-title">Páginas <span class="dim">del Blog</span></h2>
+      <p class="section-desc">Recursos adicionales sobre trading, mercado y noticias del ecosistema Bitcoin y BGEANX Exchange.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-dim);border:1px solid var(--border-dim);" class="reveal">
+      <a href="mercado.html" style="text-decoration:none;display:block;background:var(--bg-panel);padding:40px 32px;transition:background 0.3s;position:relative;overflow:hidden;" onmouseover="this.style.background='var(--bg-card)'" onmouseout="this.style.background='var(--bg-panel)'">
+        <div style="font-size:36px;margin-bottom:20px;">📊</div>
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-lime);margin-bottom:10px;">// Análisis</div>
+        <div style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--text-primary);margin-bottom:12px;">Análisis de Mercado</div>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;">Indicadores técnicos, on-chain, heatmap y sentiment del mercado Bitcoin actualizado.</p>
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-cyan);">Ver análisis →</div>
+      </a>
+      <a href="guia.html" style="text-decoration:none;display:block;background:var(--bg-panel);padding:40px 32px;transition:background 0.3s;" onmouseover="this.style.background='var(--bg-card)'" onmouseout="this.style.background='var(--bg-panel)'">
+        <div style="font-size:36px;margin-bottom:20px;">📚</div>
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-cyan);margin-bottom:10px;">// Educación</div>
+        <div style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--text-primary);margin-bottom:12px;">Guía de Trading</div>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;">Desde fundamentos hasta estrategias avanzadas. Calculadora de riesgo interactiva incluida.</p>
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-cyan);">Leer guía →</div>
+      </a>
+      <a href="noticias.html" style="text-decoration:none;display:block;background:var(--bg-panel);padding:40px 32px;transition:background 0.3s;" onmouseover="this.style.background='var(--bg-card)'" onmouseout="this.style.background='var(--bg-panel)'">
+        <div style="font-size:36px;margin-bottom:20px;">📰</div>
+        <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent-red);margin-bottom:10px;">// Actualidad</div>
+        <div style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--text-primary);margin-bottom:12px;">Noticias Crypto</div>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;">Mercado Bitcoin, regulación global y novedades de BGEANX Exchange filtradas y comentadas.</p>
+        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-cyan);">Ver noticias →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">▸ BGEANX.BLOG</a>
+  <a href="index.html" class="footer-logo">▸ BGEANX.BLOG</a>
   <div class="footer-copy">
     © 2025 Blog Personal Independiente · Contenido informativo, no asesoramiento financiero.<br>
     No afiliado oficialmente con BGEANX Digital Ltd.
   </div>
   <ul class="footer-links">
     <li><a href="#about">Sobre BGEANX</a></li>
-    <li><a href="#seguridad">Seguridad</a></li>
+    <li><a href="mercado.html">Mercado</a></li>
+    <li><a href="guia.html">Guía</a></li>
+    <li><a href="noticias.html">Noticias</a></li>
     <li><a href="#disclaimer">Aviso Legal</a></li>
     <li><a href="https://www.bgeanx.com" target="_blank" rel="noopener">bgeanx.com ↗</a></li>
   </ul>
 </footer>
 
 <script>
+  // MOBILE MENU
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('navHamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+
+  function closeMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('navHamburger');
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
   // SCROLL REVEAL
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -1642,8 +1811,27 @@
         }
       }
     });
+
+    // PROGRESS BAR
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+    document.getElementById('progressBar').style.width = pct + '%';
+
+    // BACK TO TOP
+    const btt = document.getElementById('backToTop');
+    if (btt) btt.style.opacity = window.scrollY > 600 ? '1' : '0';
   });
 </script>
+
+<!-- PROGRESS BAR -->
+<div style="position:fixed;top:64px;left:0;right:0;height:2px;background:var(--border-dim);z-index:101;">
+  <div id="progressBar" style="height:100%;background:linear-gradient(90deg,var(--accent-cyan),var(--accent-lime));width:0%;transition:width 0.1s;"></div>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+  style="position:fixed;bottom:32px;right:32px;z-index:99;background:var(--bg-card);border:1px solid var(--border-dim);color:var(--accent-cyan);font-family:var(--font-mono);font-size:16px;width:44px;height:44px;cursor:pointer;opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;"
+  aria-label="Volver arriba">↑</button>
 
 </body>
 </html>
