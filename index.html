@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BGEANX Exchange | Reseña, Licencias y Trading de Bitcoin (2026)</title>
+  <title>BGEANX Exchange | Intercambio de Bitcoin de Próxima Generación</title>
   <meta name="description" content="Mi experiencia personal con BGEANX. Análisis del exchange regulado (SEC y FSP Nueva Zelanda), motor de <1ms, seguridad con IA y trading cripto profesional." />
   <meta name="keywords" content="BGEANX, exchange Bitcoin, BGEANX review, licencias BGEANX, SEC, FSP1008743, trading criptomonedas, seguridad cripto" />
   <meta name="author" content="BGEANX.BLOG" />
@@ -20,7 +20,8 @@
   <meta name="geo.region" content="MX" />
   <meta name="language" content="Spanish" />
 
-  <!-- GEO Schema.org Structured Data (Optimizando para IA y Google) -->
+  <!-- Schema.org GEO Datos Estructurados (Optimizado para IA y Google) -->
+  <!-- Nota: Las claves como "@type" o "Review" deben permanecer en inglés por estándar de Google -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -72,7 +73,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* VARIABLES & RESET (Preservando el excelente diseño original) */
+    /* VARIABLES Y REINICIO (Preservando el excelente diseño original) */
     :root {
       --bg-void: #030712;
       --bg-deep: #060d1f;
@@ -97,11 +98,11 @@
     html { scroll-behavior: smooth; }
     body { background: var(--bg-void); color: var(--text-primary); font-family: var(--font-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
 
-    /* GRID & SCANLINE BACKGROUND */
+    /* FONDO DE CUADRÍCULA Y LÍNEAS DE ESCANEO */
     body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; z-index: 0; }
     body::after { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px); pointer-events: none; z-index: 0; }
 
-    /* NAV */
+    /* NAVEGACIÓN */
     header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
     nav { display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: rgba(3,7,18,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-dim); }
     .nav-logo { font-family: var(--font-mono); font-size: 18px; font-weight: 700; color: var(--accent-cyan); letter-spacing: 0.1em; text-decoration: none; display: flex; align-items: center; gap: 10px; }
@@ -113,7 +114,7 @@
     .nav-cta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bg-void); background: var(--accent-cyan); padding: 8px 20px; text-decoration: none; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%); transition: background 0.2s, transform 0.2s; }
     .nav-cta:hover { background: var(--accent-lime); transform: translateY(-1px); }
 
-    /* LAYOUT UTILS */
+    /* UTILIDADES DE DISEÑO */
     main { position: relative; z-index: 1; }
     section { position: relative; z-index: 1; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
@@ -123,7 +124,7 @@
     .section-title .dim { color: var(--text-muted); }
     .section-desc { font-size: 16px; color: var(--text-secondary); max-width: 600px; margin-top: 16px; line-height: 1.8; }
 
-    /* HERO */
+    /* PORTADA (HERO) */
     #hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 48px 80px; overflow: hidden; }
     .hero-glow { position: absolute; width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,255,0.07) 0%, transparent 70%); top: -200px; right: -200px; pointer-events: none; }
     .hero-glow-2 { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(170,255,0,0.05) 0%, transparent 70%); bottom: -100px; left: -100px; pointer-events: none; }
@@ -147,7 +148,7 @@
     .stat-value { font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--accent-lime); }
     .stat-change { font-family: var(--font-mono); font-size: 11px; color: var(--accent-lime); }
 
-    /* COMPONENTS (About, Features, etc.) */
+    /* COMPONENTES (Acerca de, Características, etc.) */
     #about { padding: 120px 0; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
     .about-text p { color: var(--text-secondary); margin-bottom: 20px; line-height: 1.9; }
@@ -169,7 +170,7 @@
     .feature-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.8; }
     .feature-tag { display: inline-block; margin-top: 20px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-lime); border: 1px solid rgba(170,255,0,0.25); padding: 4px 10px; }
 
-    /* TRADING & CHARTS */
+    /* OPERACIONES (TRADING) Y GRÁFICOS */
     #trading { padding: 120px 0; }
     .trading-layout { display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; }
     .trading-points { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
@@ -188,7 +189,7 @@
     .cs-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 4px; }
     .cs-val { font-family: var(--font-mono); font-size: 13px; color: var(--text-primary); }
 
-    /* SECURITY & COMPLIANCE (Optimized for E-E-A-T) */
+    /* SEGURIDAD Y CUMPLIMIENTO (Optimizado para E-E-A-T) */
     #seguridad { padding: 120px 0; background: linear-gradient(180deg, transparent, var(--bg-deep) 20%, var(--bg-deep) 80%, transparent); }
     .security-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .sec-layer { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border-dim); }
@@ -208,7 +209,7 @@
     .license-link:hover { text-decoration: underline; }
     .comp-note { font-size: 13px; color: var(--text-secondary); line-height: 1.8; border-top: 1px solid var(--border-dim); padding-top: 20px; }
 
-    /* EXPERIENCE & RATING */
+    /* EXPERIENCIA Y PUNTUACIÓN */
     #experiencia { padding: 120px 0; }
     .experience-intro { display: grid; grid-template-columns: 2fr 1fr; gap: 64px; align-items: start; margin-bottom: 64px; }
     .exp-text p { color: var(--text-secondary); margin-bottom: 20px; line-height: 1.9; }
@@ -224,14 +225,14 @@
     .score-big { font-family: var(--font-display); font-weight: 800; font-size: 56px; color: var(--accent-cyan); line-height: 1; }
     .score-label { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; margin-top: 8px; }
 
-    /* STEPS */
+    /* PASOS */
     .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-dim); border: 1px solid var(--border-dim); margin-top: 64px; }
     .step-card { background: var(--bg-panel); padding: 32px 24px; position: relative; }
     .step-num { font-family: var(--font-mono); font-size: 48px; font-weight: 700; color: var(--border-dim); line-height: 1; margin-bottom: 16px; }
     .step-title { font-family: var(--font-display); font-weight: 700; font-size: 16px; margin-bottom: 8px; color: var(--text-primary); }
     .step-body { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
 
-    /* FAQ */
+    /* PREGUNTAS FRECUENTES (FAQ) */
     #faq { padding: 120px 0; background: linear-gradient(180deg, transparent, var(--bg-deep) 20%, var(--bg-deep) 80%, transparent); }
     .faq-layout { display: grid; grid-template-columns: 380px 1fr; gap: 80px; align-items: start; }
     .faq-list { display: flex; flex-direction: column; gap: 0; }
@@ -242,14 +243,14 @@
     .faq-a { font-size: 14px; color: var(--text-secondary); line-height: 1.8; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding-bottom 0.3s; }
     .faq-item.open .faq-a { max-height: 500px; padding-bottom: 20px; }
 
-    /* DISCLAIMER */
+    /* DESCARGO DE RESPONSABILIDAD */
     #disclaimer { padding: 80px 0; }
     .disclaimer-box { background: var(--bg-panel); border: 1px solid var(--border-dim); border-left: 4px solid var(--accent-amber); padding: 36px 40px; }
     .disclaimer-title { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-amber); margin-bottom: 16px; }
     .disclaimer-text { font-size: 14px; color: var(--text-secondary); line-height: 1.9; }
     .disclaimer-text a { color: var(--accent-cyan); text-decoration: none; }
 
-    /* FOOTER */
+    /* PIE DE PÁGINA */
     footer { border-top: 1px solid var(--border-dim); padding: 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; position: relative; z-index: 1;}
     .footer-logo { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--accent-cyan); text-decoration: none; }
     .footer-copy { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); text-align: center; }
@@ -257,7 +258,7 @@
     .footer-links a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--accent-cyan); }
 
-    /* ANIMATIONS & UTILS */
+    /* ANIMACIONES Y UTILIDADES */
     @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -265,7 +266,7 @@
     ::-webkit-scrollbar-track { background: var(--bg-void); }
     ::-webkit-scrollbar-thumb { background: var(--accent-cyan); }
 
-    /* MOBILE MENU & RESPONSIVE */
+    /* MENÚ MÓVIL Y DISEÑO RESPONSIVO */
     .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
     .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--text-secondary); transition: all 0.3s; }
     .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -297,7 +298,7 @@
 </head>
 <body>
 
-<!-- HEADERS & NAV -->
+<!-- CABECERA Y NAVEGACIÓN -->
 <header>
   <nav>
     <a href="index.html" class="nav-logo">BGEANX.BLOG</a>
@@ -320,13 +321,13 @@
     </div>
   </nav>
 
-  <!-- PROGRESS BAR -->
+  <!-- BARRA DE PROGRESO -->
   <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--border-dim);z-index:101;">
     <div id="progressBar" style="height:100%;background:linear-gradient(90deg,var(--accent-cyan),var(--accent-lime));width:0%;transition:width 0.1s;"></div>
   </div>
 </header>
 
-<!-- MOBILE MENU -->
+<!-- MENÚ MÓVIL -->
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-inner">
     <div class="mobile-menu-section">
@@ -341,7 +342,7 @@
 </div>
 
 <main>
-  <!-- HERO -->
+  <!-- PORTADA (HERO) -->
   <section id="hero">
     <div class="hero-glow"></div>
     <div class="hero-glow-2"></div>
@@ -382,7 +383,7 @@
     </aside>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ACERCA DE -->
   <section id="about">
     <div class="container">
       <div class="about-grid">
@@ -415,7 +416,7 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
+  <!-- CARACTERÍSTICAS -->
   <section id="features">
     <div class="container">
       <div class="section-header reveal">
@@ -445,7 +446,7 @@
     </div>
   </section>
 
-  <!-- TRADING (Preserved UI, simplified code) -->
+  <!-- OPERACIONES (TRADING) -->
   <section id="trading">
     <div class="container">
       <div class="trading-layout">
@@ -472,7 +473,7 @@
           </div>
         </div>
         
-        <!-- MOCK CHART -->
+        <!-- GRÁFICO SIMULADO -->
         <div class="chart-panel reveal">
           <div class="chart-header">
             <div>
@@ -501,7 +502,7 @@
     </div>
   </section>
 
-  <!-- SECURITY & COMPLIANCE (GEO Optimized) -->
+  <!-- SEGURIDAD Y CUMPLIMIENTO -->
   <section id="seguridad">
     <div class="container">
       <div class="section-header reveal">
@@ -526,7 +527,6 @@
           </div>
         </div>
 
-        <!-- Compliance Data Inject for E-E-A-T -->
         <aside class="compliance-box reveal">
           <div class="comp-title">Licencias Oficiales Públicas</div>
           <p class="sec-desc" style="margin-bottom: 20px;">Como usuario, investigar la legalidad de un exchange es mi prioridad. Estos son los registros públicos de BGEANX:</p>
@@ -549,7 +549,7 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
+  <!-- EXPERIENCIA -->
   <section id="experiencia">
     <div class="container">
       <div class="section-header reveal">
@@ -580,7 +580,7 @@
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- PREGUNTAS FRECUENTES (FAQ) -->
   <section id="faq">
     <div class="container">
       <div class="faq-layout">
@@ -604,7 +604,7 @@
     </div>
   </section>
 
-  <!-- DISCLAIMER -->
+  <!-- DESCARGO DE RESPONSABILIDAD -->
   <section id="disclaimer">
     <div class="container reveal">
       <aside class="disclaimer-box">
@@ -617,7 +617,7 @@
   </section>
 </main>
 
-<!-- FOOTER -->
+<!-- PIE DE PÁGINA -->
 <footer>
   <a href="index.html" class="footer-logo">▸ BGEANX.BLOG</a>
   <div class="footer-copy">
@@ -631,11 +631,11 @@
   </ul>
 </footer>
 
-<!-- BACK TO TOP -->
+<!-- VOLVER ARRIBA -->
 <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:32px;right:32px;z-index:99;background:var(--bg-card);border:1px solid var(--border-dim);color:var(--accent-cyan);font-family:var(--font-mono);font-size:16px;width:44px;height:44px;cursor:pointer;opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;" aria-label="Volver arriba">↑</button>
 
 <script>
-  // MOBILE MENU
+  // MENÚ MÓVIL
   function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
     const btn = document.getElementById('navHamburger');
@@ -649,7 +649,7 @@
     document.body.style.overflow = '';
   }
 
-  // SCROLL REVEAL
+  // REVELAR AL DESPLAZAR (SCROLL)
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
@@ -660,7 +660,7 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-  // FAQ TOGGLE
+  // ALTERNAR PREGUNTAS FRECUENTES
   function toggleFaq(el) {
     const item = el.parentElement;
     const isOpen = item.classList.contains('open');
@@ -668,15 +668,15 @@
     if (!isOpen) item.classList.add('open');
   }
 
-  // SCROLL EVENTS (Progress bar, Nav active, Back to top)
+  // EVENTOS DE DESPLAZAMIENTO (Barra de progreso, Navegación activa, Volver arriba)
   window.addEventListener('scroll', () => {
-    // Progress Bar
+    // Barra de progreso
     const docH = document.documentElement.scrollHeight - window.innerHeight;
     const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
     const pBar = document.getElementById('progressBar');
     if(pBar) pBar.style.width = pct + '%';
 
-    // Back to top
+    // Volver arriba
     const btt = document.getElementById('backToTop');
     if (btt) btt.style.opacity = window.scrollY > 600 ? '1' : '0';
     if (btt) btt.style.pointerEvents = window.scrollY > 600 ? 'auto' : 'none';
