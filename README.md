@@ -1,7 +1,7 @@
-# BGEANX Introduction Blog (bgeanx.mx)
+# BGEANX Introduction Blog (bgeanx.net)
 
 > 💡 A third-party personal blog created by a cryptocurrency enthusiast, dedicated to introducing the BGEANX exchange.
-> 🌐 Live Website: [https://bgeanx.mx/](https://bgeanx.mx/)
+> 🌐 Live Website: [https://bgeanx.net/](https://bgeanx.net/)
 
 ## 📖 About This Project
 
@@ -19,7 +19,7 @@ The main content of the website includes:
 
 * This is a static page project built with pure HTML/CSS, lightweight and fast.
 * The code is hosted on GitHub and deployed using GitHub Pages.
-* The website is configured and bound to a custom personal domain: `bgeanx.mx`.
+* The website is configured and bound to a custom personal domain: `bgeanx.net`.
 
 ## ⚠️ Important Disclaimer
 
