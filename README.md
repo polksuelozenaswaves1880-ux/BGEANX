@@ -1,7 +1,7 @@
-# BGEANX Introduction Blog (bgeanx.net)
+# BGEANX Introduction Blog (coinreviewlab.com)
 
 > 💡 A third-party personal blog created by a cryptocurrency enthusiast, dedicated to introducing the BGEANX exchange.
-> 🌐 Live Website: [https://bgeanx.net/](https://bgeanx.net/)
+> 🌐 Live Website: [https://coinreviewlab.com/](https://coinreviewlab.com/)
 
 ## 📖 About This Project
 
@@ -19,7 +19,7 @@ The main content of the website includes:
 
 * This is a static page project built with pure HTML/CSS, lightweight and fast.
 * The code is hosted on GitHub and deployed using GitHub Pages.
-* The website is configured and bound to a custom personal domain: `bgeanx.net`.
+* The website is configured and bound to a custom personal domain: `coinreviewlab.com`.
 
 ## ⚠️ Important Disclaimer
 
