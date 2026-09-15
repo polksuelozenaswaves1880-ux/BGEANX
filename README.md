@@ -1,29 +1,83 @@
-# BGEANX Introduction Blog (coinreviewlab.com)
+# BGEANX CFD Review Site
 
-> 💡 A third-party personal blog created by a cryptocurrency enthusiast, dedicated to introducing the BGEANX exchange.
-> 🌐 Live Website: [https://coinreviewlab.com/](https://coinreviewlab.com/)
+A multilingual static review website for BGEANX, focused on its current multi-asset CFD platform offering.
 
-## 📖 About This Project
+## Languages
 
-This is a purely **personal/third-party website**. The original intention of building this site is to share and introduce the basic information, public records, and personal user experience of the BGEANX exchange from the perspective of a regular user.
+- English: root pages
+- Español: `/es/` subsite
 
-The main content of the website includes:
-* **Platform Introduction**: A simple and easy-to-understand overview of what BGEANX is, along with its basic features and market positioning.
-* **Compliance & License Information**: Curated public regulatory qualifications related to BGEANX for reference, including:
-  * 🇺🇸 **U.S. SEC Registration**: [View SEC Edgar Official Archive](https://www.sec.gov/Archives/edgar/data/2051459/000205133025000002/0002051330-25-000002-index.htm)
-  * 🇳🇿 **New Zealand FSP License**: Entity name `BGEANX DIGITAL LIMITED`, FSP Number `FSP1008743`, NZBN `9429052478222`. [View FSP Official Registration](https://fsp-app.companiesoffice.govt.nz/orp-fsp-register/viewInstance/view.html?id=757b371f1b6eec44bad4008937136b8faa71a3db1aa7dcd2bb4ba77b0eeb1109&_timestamp=3212680311921166)
-* **Personal Experience**: Daily usage insights and operational experiences shared by a real user.
-* **Beginner's Guide**: Helping friends interested in BGEANX to quickly understand and get started with the platform.
+Each page includes a direct language switch so visitors can move between the English and Spanish versions of the same content.
 
-## 🛠️ Tech Stack & Deployment
+## Site structure
 
-* This is a static page project built with pure HTML/CSS, lightweight and fast.
-* The code is hosted on GitHub and deployed using GitHub Pages.
-* The website is configured and bound to a custom personal domain: `coinreviewlab.com`.
+### English
 
-## ⚠️ Important Disclaimer
+- `/` — Main BGEANX review with editorial score
+- `/guia.html` — CFD guide: margin, leverage, orders and risk
+- `/mercado.html` — Forex, commodities, indices and individual-share CFDs
+- `/noticias.html` — BGEANX product, platform and educational updates
+- `/products/` — Products and markets
+- `/fees/` — Spreads, financing and trading costs
+- `/security/` — Security, funds and applicable entity
 
-To avoid any misunderstanding, please note the following:
+### Español
 
-1. **Strictly Unofficial**: This project and website (`bgeanx.mx`) are entirely third-party personal endeavors. There is no affiliation, employment, agency, or sponsorship relationship with official BGEANX or its registered entities (e.g., BGEANX DIGITAL LIMITED).
-2. **Not Financial Advice**: All content on this blog (including cited licenses and regulatory information) is strictly for personal information collection, organization, and sharing. It does not constitute any investment or financial advice. The cryptocurrency market is highly risky; please always Do Your Own Research (DYOR) before making any trading decisions.
+The equivalent Spanish pages are available under `/es/`:
+
+- `/es/`
+- `/es/guia.html`
+- `/es/mercado.html`
+- `/es/noticias.html`
+- `/es/products/`
+- `/es/fees/`
+- `/es/security/`
+
+## Review format
+
+The homepage uses a 5-point editorial scoring model:
+
+- Markets and products — 30%
+- Platform and usability — 20%
+- Costs and transparency — 20%
+- Risk management — 15%
+- Security and information — 15%
+
+Current editorial score: **4.4/5 — Positive with caution**.
+
+The score is an editorial assessment of publicly available information. It is not a guarantee of performance, a recommendation to trade or a substitute for reviewing the applicable client agreement and risk disclosure.
+
+## Sources and editorial scope
+
+The review is based primarily on the public BGEANX website and its published pages covering:
+
+- Platform and corporate information
+- Spreads and costs
+- Fund security
+- Risk education
+- Corporate news
+
+Source links are shown on every page. Editorial review date: **September 15, 2026**.
+
+The site is independent and is not affiliated with BGEANX. It does not claim to provide an independent execution, withdrawal or customer-service test unless explicitly stated.
+
+## Static deployment
+
+This project is plain static HTML, CSS and JavaScript. It does not require a server-side framework, database or build step.
+
+Main files:
+
+- `index.html`
+- `es/index.html`
+- `styles.css`
+- `ui.js`
+- `sitemap.xml`
+- `robots.txt`
+
+Directory-style pages use `index.html`, allowing static hosting paths such as `/products/`, `/fees/` and `/security/`.
+
+## Risk disclosure
+
+CFDs are complex, leveraged products and are not suitable for every user. Leverage can amplify both gains and losses. Product availability, costs, leverage, margin requirements, client protection and payment methods depend on the applicable BGEANX entity, jurisdiction and client classification.
+
+Visitors should read the applicable product documents, client agreement and risk disclosure before trading. This website provides informational content only and does not provide investment, legal, tax or financial advice.
